@@ -60,6 +60,7 @@ const TestimonialsSection = () => {
 
     return (
         <section
+            id="testimonials"
             className="py-20 lg:py-32 bg-gradient-to-b from-deep-space-800 to-deep-space-900 relative overflow-hidden"
             onMouseEnter={() => setIsAutoPlay(false)}
             onMouseLeave={() => setIsAutoPlay(true)}

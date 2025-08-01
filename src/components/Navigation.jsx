@@ -41,23 +41,7 @@ const Navigation = () => {
                             whileHover={{ scale: 1.05 }}
                             className="flex items-center gap-2"
                         >
-                            <motion.div
-                                animate={{
-                                    rotate: [0, 5, -5, 0],
-                                    scale: [1, 1.1, 1]
-                                }}
-                                transition={{
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                                className="text-2xl"
-                            >
-                                🌊
-                            </motion.div>
-                            <span className="text-2xl font-bold bg-gradient-to-r from-flowrise-blue-400 to-flowrise-green-400 bg-clip-text text-transparent">
-                                FLOWRISE
-                            </span>
+                            <img src="/FlowriseLogo.png" alt="Flowrise Logo" className="w-48 h-48" />
                         </motion.div>
 
                         {/* Desktop Navigation */}
@@ -152,20 +136,27 @@ const Navigation = () => {
                         >
                             <div className="container mx-auto px-6 py-6">
                                 <div className="flex flex-col gap-4">
-                                    {navItems.map((item, index) => (
-                                        <motion.a
-                                            key={item.name}
-                                            href={item.href}
-                                            initial={{ x: -20, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                            className="text-gray-300 hover:text-flowrise-blue-400 transition-colors duration-300 font-medium py-2"
-                                        >
-                                            {item.name}
-                                        </motion.a>
-                                    ))}
+                                    {navItems.map((item, index) => {
+                                        const isRouterLink = item.href.startsWith('/');
+                                        const Component = isRouterLink ? Link : motion.a;
+                                        const linkProps = isRouterLink ? { to: item.href } : { href: item.href };
+
+                                        return (
+                                            <Component
+                                                key={item.name}
+                                                {...linkProps}
+                                                initial={{ x: -20, opacity: 0 }}
+                                                animate={{ x: 0, opacity: 1 }}
+                                                transition={{ duration: 0.3, delay: index * 0.1 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="flex items-center gap-2 text-gray-300 hover:text-flowrise-blue-400 transition-colors duration-300 font-medium py-2"
+                                            >
+                                                {item.icon && <item.icon className="w-4 h-4" />}
+                                                {item.name}
+                                            </Component>
+                                        );
+                                    })}
 
                                     <div className="border-t border-white/10 pt-4 mt-2">
                                         <motion.button
