@@ -51,40 +51,40 @@ const WhoWeHelpSection = () => {
     ];
 
     return (
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-flowrise-navy-900 via-flowrise-navy-800 to-flowrise-navy-900 relative overflow-hidden">
+        <section className="py-16 sm:py-20 lg:py-32 bg-gradient-to-b from-flowrise-navy-900 via-flowrise-navy-800 to-flowrise-navy-900 relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-flowrise-blue-500/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-flowrise-green-500/15 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-flowrise-blue-400/10 rounded-full blur-2xl"></div>
+                <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-flowrise-blue-500/20 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-flowrise-green-500/15 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/4 sm:left-1/3 w-32 h-32 sm:w-64 sm:h-64 bg-flowrise-blue-400/10 rounded-full blur-2xl"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-16 lg:mb-20"
                 >
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-flowrise-blue-500/20 to-flowrise-green-500/20 backdrop-blur-xl rounded-full px-6 py-3 border border-flowrise-blue-400/30 mb-8"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-flowrise-blue-500/20 to-flowrise-green-500/20 backdrop-blur-xl rounded-full px-4 sm:px-6 py-2 sm:py-3 border border-flowrise-blue-400/30 mb-6 sm:mb-8"
                     >
-                        <Sparkles className="w-5 h-5 text-flowrise-green-400" />
-                        <span className="text-flowrise-blue-200 font-medium">Perfect For</span>
+                        <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-flowrise-green-400" />
+                        <span className="text-flowrise-blue-200 font-medium text-sm sm:text-base">Perfect For</span>
                     </motion.div>
 
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight px-4">
                         Who This Is{' '}
                         <span className="bg-gradient-to-r from-flowrise-blue-400 to-flowrise-green-400 bg-clip-text text-transparent relative">
                             For
                             <motion.div
-                                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-flowrise-blue-400 to-flowrise-green-400 rounded-full"
+                                className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-flowrise-blue-400 to-flowrise-green-400 rounded-full"
                                 initial={{ scaleX: 0 }}
                                 whileInView={{ scaleX: 1 }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -92,14 +92,14 @@ const WhoWeHelpSection = () => {
                             />
                         </span>
                     </h2>
-                    <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
                         If you're ready to stop struggling with ineffective funnels and start scaling your business to{' '}
                         <span className="text-flowrise-green-400 font-semibold">6-7 figures</span>...
                     </p>
                 </motion.div>
 
                 {/* Enhanced Profile Cards */}
-                <div className="grid md:grid-cols-3 gap-8 lg:gap-12 mb-20">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-16 lg:mb-20">
                     {profiles.map((profile, index) => {
                         const IconComponent = profile.icon;
                         return (
