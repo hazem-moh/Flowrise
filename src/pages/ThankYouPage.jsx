@@ -8,13 +8,23 @@ const ThankYouPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        // Smooth fade-in transition
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease-in';
+
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+
         setShowConfetti(true);
         const timer = setTimeout(() => setShowConfetti(false), 3000);
         return () => clearTimeout(timer);
     }, []);
 
     const handleBookCall = () => {
-        navigate('/book-call');
+        const redirectUrl = window.location.origin + '/call-booked';
+        const calendlyUrl = `https://calendly.com/hazemmohamed345674/new-meeting?redirect_url=${encodeURIComponent(redirectUrl)}`;
+        window.open(calendlyUrl, '_blank');
     };
 
     const handleGoToBlueprint = () => {

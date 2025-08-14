@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, Home, Download, CheckCircle, Calendar } from 'lucide-react';
+import { Settings, Home, Download, CheckCircle, Calendar, Phone } from 'lucide-react';
 
 const DevNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,8 @@ const DevNavigation = () => {
         { path: '/', name: 'Landing Page', icon: Home },
         { path: '/lead-magnet', name: 'Lead Magnet', icon: Download },
         { path: '/thank-you', name: 'Thank You', icon: CheckCircle },
-        { path: '/book-call', name: 'Book Call', icon: Calendar },
+        { path: '/book-call', name: 'What to Expect', icon: Calendar },
+        { path: '/call-booked', name: 'Call Booked', icon: Phone },
     ];
 
     return (
@@ -36,8 +37,8 @@ const DevNavigation = () => {
                                         to={route.path}
                                         onClick={() => setIsOpen(false)}
                                         className={`flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-300 ${isActive
-                                                ? 'bg-flow-purple-600 text-white'
-                                                : 'text-gray-300 hover:bg-deep-space-700 hover:text-white'
+                                            ? 'bg-flow-purple-600 text-white'
+                                            : 'text-gray-300 hover:bg-deep-space-700 hover:text-white'
                                             }`}
                                     >
                                         <route.icon className="w-4 h-4" />
@@ -55,8 +56,8 @@ const DevNavigation = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen
-                        ? 'bg-flow-purple-600 text-white shadow-glow'
-                        : 'bg-deep-space-800/90 backdrop-blur-xl border border-white/10 text-gray-400 hover:text-white'
+                    ? 'bg-flow-purple-600 text-white shadow-glow'
+                    : 'bg-deep-space-800/90 backdrop-blur-xl border border-white/10 text-gray-400 hover:text-white'
                     }`}
             >
                 <Settings className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`} />

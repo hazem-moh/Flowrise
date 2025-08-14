@@ -72,12 +72,11 @@ const GuaranteeSection = () => {
                         </motion.div>
 
                         <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
-                            100% Money-Back Guarantee
+                            Risk-Free Guarantee
                         </h3>
 
                         <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">
-                            If you don't see significant improvements in your funnel's performance within 90 days,
-                            we'll refund every penny. No questions asked.
+                            If you don’t see significant improvements in your funnel’s performance within 90 days, we’ll continue working with you — following your system — until it delivers results, at no extra cost.
                         </p>
 
                         <motion.div

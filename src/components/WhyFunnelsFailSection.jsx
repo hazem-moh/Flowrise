@@ -163,15 +163,21 @@ const WhyFunnelsFailSection = () => {
                                 className="group relative"
                                 style={{ transformStyle: 'preserve-3d' }}
                             >
-                                <div className="relative bg-gradient-to-br from-white/8 via-white/4 to-transparent backdrop-blur-2xl rounded-3xl p-8 lg:p-10 border border-red-500/30 hover:border-red-400/60 transition-all duration-500 h-full overflow-hidden">
-                                    {/* Dynamic Background */}
+                                <div className="relative bg-gradient-to-br from-white/8 via-white/4 to-transparent backdrop-blur-2xl rounded-3xl p-8 lg:p-10 border border-red-500/30 hover:border-red-400/60 transition-all duration-500 h-full overflow-hidden hover:bg-gradient-to-br hover:from-red-500/25 hover:via-orange-500/20 hover:to-red-600/25">
+                                    {/* Main Hover Background - Strong and Visible */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-red-500/30 via-orange-500/25 to-red-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+
+                                    {/* Secondary animated background */}
                                     <motion.div
-                                        className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                                        className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+                                        style={{
+                                            background: 'linear-gradient(45deg, rgba(239, 68, 68, 0.2), rgba(251, 146, 60, 0.15))'
+                                        }}
                                         animate={{
                                             background: [
-                                                'linear-gradient(45deg, rgba(239, 68, 68, 0.1), transparent)',
-                                                'linear-gradient(135deg, rgba(251, 146, 60, 0.1), transparent)',
-                                                'linear-gradient(45deg, rgba(239, 68, 68, 0.1), transparent)'
+                                                'linear-gradient(45deg, rgba(239, 68, 68, 0.2), rgba(251, 146, 60, 0.15))',
+                                                'linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(239, 68, 68, 0.15))',
+                                                'linear-gradient(45deg, rgba(239, 68, 68, 0.2), rgba(251, 146, 60, 0.15))'
                                             ]
                                         }}
                                         transition={{ duration: 4, repeat: Infinity }}
@@ -194,9 +200,9 @@ const WhyFunnelsFailSection = () => {
                                         />
                                     </motion.div>
 
-                                    {/* Problem State (Default) */}
+                                    {/* Problem State (Always Visible) */}
                                     <motion.div
-                                        className="group-hover:opacity-0 transition-all duration-500"
+                                        className="relative z-10"
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
@@ -220,40 +226,9 @@ const WhyFunnelsFailSection = () => {
                                         </p>
                                     </motion.div>
 
-                                    {/* Solution State (Hover) */}
+                                    {/* Enhanced Hover Effects - Cleaned up */}
                                     <motion.div
-                                        className="absolute inset-8 lg:inset-10 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center"
-                                        initial={{ y: 30, scale: 0.9 }}
-                                        whileHover={{ y: 0, scale: 1 }}
-                                    >
-                                        <div className="flex items-center gap-2 mb-6">
-                                            <motion.div
-                                                animate={{ scale: [1, 1.2, 1] }}
-                                                transition={{ duration: 2, repeat: Infinity }}
-                                                className="w-8 h-8 bg-flowrise-green-500/20 rounded-full flex items-center justify-center"
-                                            >
-                                                <CheckCircle className="w-5 h-5 text-flowrise-green-400" />
-                                            </motion.div>
-                                            <span className="text-flowrise-green-400 font-semibold text-sm">OUR FIX</span>
-                                        </div>
-
-                                        <p className="text-flowrise-green-300 text-base lg:text-lg leading-relaxed font-medium">
-                                            {failure.solution}
-                                        </p>
-
-                                        {/* Solution CTA Arrow */}
-                                        <motion.div
-                                            className="mt-4 self-end"
-                                            animate={{ x: [0, 5, 0] }}
-                                            transition={{ duration: 2, repeat: Infinity }}
-                                        >
-                                            <Zap className="w-5 h-5 text-flowrise-green-400" />
-                                        </motion.div>
-                                    </motion.div>
-
-                                    {/* Enhanced Hover Effects */}
-                                    <motion.div
-                                        className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-orange-500/5 to-red-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                        className="absolute inset-0 bg-gradient-to-br from-red-400/15 via-orange-400/12 to-red-500/15 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                         animate={{
                                             scale: [1, 1.02, 1],
                                         }}

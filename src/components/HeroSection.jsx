@@ -50,7 +50,7 @@ const HeroSection = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight"
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
                         >
                             Scale Your Info Product to{' '}
                             <span className="bg-gradient-to-r from-flowrise-blue-400 to-flowrise-green-400 bg-clip-text text-transparent">
@@ -92,23 +92,14 @@ const HeroSection = () => {
                                 whileTap={{ scale: 0.95 }}
                                 className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-flowrise-blue-600 to-flowrise-green-600 text-white font-semibold text-sm sm:text-base rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 flex items-center justify-center gap-2"
                             >
-                                <Check className="w-4 h-4 sm:w-5 sm:h-5" />
-                                <span className="whitespace-nowrap">Apply for Strategy Call</span>
+                                <span className="whitespace-nowrap">Book Strategy Call</span>
                                 <motion.div
                                     className="absolute inset-0 bg-gradient-to-r from-flowrise-blue-500 to-flowrise-green-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                     style={{ zIndex: -1 }}
                                 />
                             </motion.button>
 
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-flowrise-blue-500 text-flowrise-blue-400 font-semibold text-sm sm:text-base rounded-xl hover:bg-flowrise-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center gap-2"
-                            >
-                                <Play className="w-4 h-4 sm:w-5 sm:h-5" />
-                                <span className="whitespace-nowrap">Watch 5-Min Training</span>
-                                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                            </motion.button>
+                         
                         </motion.div>
                     </motion.div>
 
@@ -117,14 +108,15 @@ const HeroSection = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="relative flex items-center justify-center h-[500px] sm:h-[600px] lg:h-[700px] w-full order-1 lg:order-2"
+                        className="relative hidden lg:flex items-center justify-center h-[500px] sm:h-[600px] lg:h-[700px] w-full order-1 lg:order-2"
                     >
                         {/* Central Flowrise Logo/Icon - Static */}
-                        <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-flowrise-blue-500 to-flowrise-green-500 rounded-2xl flex items-center justify-center shadow-2xl">
-                            <div className="text-white text-xl sm:text-2xl lg:text-3xl font-bold">F</div>
+                        <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 lg:w-60 lg:h-60 flex items-center justify-center ">
+
+                            <img src="/public/FlowriseLogo.png" alt="" />
+                            {/* <div className="text-white text-xl sm:text-2xl lg:text-3xl font-bold">F</div>
                             <div className="absolute inset-0 bg-gradient-to-br from-flowrise-blue-400 to-flowrise-green-400 rounded-2xl blur-lg opacity-40"></div>
-                            {/* Professional center shadow */}
-                            <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 lg:w-20 h-3 sm:h-4 lg:h-6 bg-black/30 rounded-full blur-lg"></div>
+                            <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 lg:w-20 h-3 sm:h-4 lg:h-6 bg-black/30 rounded-full blur-lg"></div> */}
                         </div>
 
                         {/* Simplified 3-Ring System with 9 Icons Total - Mobile Responsive */}

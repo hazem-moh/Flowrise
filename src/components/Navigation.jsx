@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Play, Download, Calendar } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -70,25 +70,20 @@ const Navigation = () => {
 
                         {/* CTA Buttons */}
                         <div className="hidden md:flex items-center gap-4">
+
                             <motion.button
+                                onClick={() => {
+                                    const redirectUrl = window.location.origin + '/call-booked';
+                                    const calendlyUrl = `https://calendly.com/hazemmohamed345674/new-meeting?redirect_url=${encodeURIComponent(redirectUrl)}`;
+                                    window.open(calendlyUrl, '_blank');
+                                }}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex items-center gap-2 px-4 py-2 text-flowrise-blue-400 hover:text-white transition-colors duration-300"
+                                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-flowrise-blue-600 to-flowrise-green-600 text-white font-semibold rounded-lg shadow-glow hover:shadow-glow-lg transition-all duration-300"
                             >
-                                <Play className="w-4 h-4" />
-                                <span className="font-medium">Watch Training</span>
+                                <Calendar className="w-4 h-4" />
+                                <span>Book Call</span>
                             </motion.button>
-
-                            <Link to="/book-call">
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-flowrise-blue-600 to-flowrise-green-600 text-white font-semibold rounded-lg shadow-glow hover:shadow-glow-lg transition-all duration-300"
-                                >
-                                    <Calendar className="w-4 h-4" />
-                                    <span>Book Call</span>
-                                </motion.button>
-                            </Link>
                         </div>
 
                         {/* Mobile Menu Button */}
@@ -158,19 +153,14 @@ const Navigation = () => {
                                         );
                                     })}
 
-                                    <div className="border-t border-white/10 pt-4 mt-2">
+                                    <div className=" pt-4 mt-2">
+                                    
                                         <motion.button
-                                            initial={{ x: -20, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ duration: 0.3, delay: 0.3 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 text-flowrise-blue-400 hover:text-white transition-colors duration-300 border border-flowrise-blue-500 rounded-lg mb-3"
-                                        >
-                                            <Play className="w-4 h-4" />
-                                            <span className="font-medium">Watch Training</span>
-                                        </motion.button>
-
-                                        <motion.button
+                                            onClick={() => {
+                                                const redirectUrl = window.location.origin + '/call-booked';
+                                                const calendlyUrl = `https://calendly.com/hazemmohamed345674/new-meeting?redirect_url=${encodeURIComponent(redirectUrl)}`;
+                                                window.open(calendlyUrl, '_blank');
+                                            }}
                                             initial={{ x: -20, opacity: 0 }}
                                             animate={{ x: 0, opacity: 1 }}
                                             transition={{ duration: 0.3, delay: 0.4 }}

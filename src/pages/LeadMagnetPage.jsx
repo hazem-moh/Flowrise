@@ -1,13 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Target, Brain, DollarSign, Download, CheckCircle, Mail } from 'lucide-react';
+import { Target, Brain, DollarSign, Download, Mail } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import SubscribePopup from '../components/SubscribePopup';
 
 const LeadMagnetPage = () => {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const navigate = useNavigate();
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    const benefits = [
+    // Ensure body opacity is reset when component mounts
+    useEffect(() => {
+        document.body.style.opacity = '1';
+        document.body.style.transition = '';
+    }, []);
+
+    const handleShowForm = () => {
+        console.log('Opening subscription popup');
+        setIsPopupOpen(true);
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupOpen(false);
+    };
+
+    const handleSubscribeSuccess = () => {
+        console.log('🎉 Subscription successful, redirecting...');
+        setIsPopupOpen(false);
+
+        // Smooth transition to thank you page
+        document.body.style.transition = 'opacity 0.5s ease-out';
+        document.body.style.opacity = '0';
+
+        setTimeout(() => {
+            navigate('/thank-you');
+        }, 500);
+    }; const benefits = [
         {
             icon: Target,
             title: "The 'Frictionless Funnel' blueprint",
@@ -24,17 +51,6 @@ const LeadMagnetPage = () => {
             description: "And how to fix it in one sentence"
         }
     ];
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (email && name) {
-            setIsSubmitted(true);
-            // Here you would typically send the data to your email service
-            setTimeout(() => {
-                window.location.href = '/thank-you';
-            }, 2000);
-        }
-    };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-deep-space-900 via-deep-space-800 to-electric-indigo-700 overflow-hidden">
@@ -181,112 +197,83 @@ const LeadMagnetPage = () => {
                                     </p>
                                 </div>
 
-                                {!isSubmitted ? (
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        {/* Name Input */}
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.6, delay: 0.8 }}
-                                        >
-                                            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                                                First Name *
-                                            </label>
-                                            <motion.input
-                                                whileFocus={{ scale: 1.02 }}
-                                                type="text"
-                                                id="name"
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                                required
-                                                className="w-full px-4 py-3 bg-deep-space-800/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-flow-purple-500 focus:outline-none transition-all duration-300"
-                                                placeholder="Enter your first name"
-                                            />
-                                        </motion.div>
+                                {/* Custom Google Forms Button */}
+                                <div className="space-y-6">
+                                    <motion.button
+                                        onClick={handleShowForm}
+                                        whileHover={{
+                                            scale: 1.02,
+                                            boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.4)"
+                                        }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="w-full relative group overflow-hidden flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-green-600 via-green-500 to-emerald-600 hover:from-green-700 hover:via-green-600 hover:to-emerald-700 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 text-lg border border-green-400/20"
+                                    >
+                                        {/* Button content */}
+                                        <div className="relative flex items-center gap-3">
+                                            <motion.div
+                                                animate={{
+                                                    rotate: [0, 10, -10, 0],
+                                                    scale: [1, 1.1, 1]
+                                                }}
+                                                transition={{
+                                                    duration: 2,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut"
+                                                }}
+                                            >
+                                                <Download className="w-6 h-6" />
+                                            </motion.div>
+                                            <span className="font-bold text-lg tracking-wide">
+                                                Get Instant Access
+                                            </span>
+                                            <motion.div
+                                                animate={{ x: [0, 5, 0] }}
+                                                transition={{
+                                                    duration: 1.5,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut"
+                                                }}
+                                                className="text-xl"
+                                            >
+                                                →
+                                            </motion.div>
+                                        </div>
+                                    </motion.button>
 
-                                        {/* Email Input */}
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.6, delay: 0.9 }}
-                                        >
-                                            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                                                Email Address *
-                                            </label>
-                                            <motion.input
-                                                whileFocus={{ scale: 1.02 }}
-                                                type="email"
-                                                id="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                required
-                                                className="w-full px-4 py-3 bg-deep-space-800/50 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-flow-purple-500 focus:outline-none transition-all duration-300"
-                                                placeholder="Enter your email address"
-                                            />
-                                        </motion.div>
-
-                                        {/* Submit Button */}
-                                        <motion.button
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.6, delay: 1 }}
-                                            whileHover={{ scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            type="submit"
-                                            className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-bold rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 text-lg"
-                                        >
-                                            <Download className="w-5 h-5" />
-                                            Get Instant Access
-                                        </motion.button>
-
-                                        <p className="text-xs text-gray-400 text-center">
+                                    {/* Trust indicators */}
+                                    <div className="text-center space-y-3">
+                                        <div className="flex items-center justify-center gap-2 text-green-400">
+                                            <motion.div
+                                                animate={{ scale: [1, 1.2, 1] }}
+                                                transition={{
+                                                    duration: 2,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut"
+                                                }}
+                                            >
+                                                ✓
+                                            </motion.div>
+                                            <span className="text-sm font-semibold">Instant Download</span>
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 text-green-400">
+                                            <motion.div
+                                                animate={{ scale: [1, 1.2, 1] }}
+                                                transition={{
+                                                    duration: 2,
+                                                    delay: 0.5,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut"
+                                                }}
+                                            >
+                                                ✓
+                                            </motion.div>
+                                            <span className="text-sm font-semibold">No Spam, Ever</span>
+                                        </div>
+                                        <p className="text-xs text-gray-400 mt-4">
                                             We respect your privacy. Unsubscribe at any time.
                                         </p>
-                                    </form>
-                                ) : (
-                                    // Success State
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.6 }}
-                                        className="text-center py-8"
-                                    >
-                                        <motion.div
-                                            animate={{
-                                                scale: [1, 1.2, 1],
-                                                rotate: [0, 10, 0]
-                                            }}
-                                            transition={{
-                                                duration: 0.6,
-                                                repeat: 3
-                                            }}
-                                            className="inline-block mb-6"
-                                        >
-                                            <CheckCircle className="w-16 h-16 text-green-400" />
-                                        </motion.div>
-
-                                        <h3 className="text-2xl font-bold text-white mb-4">
-                                            Perfect! Check Your Email 📧
-                                        </h3>
-                                        <p className="text-gray-300 mb-6">
-                                            Your blueprint is on its way. Check your inbox (and spam folder) in the next few minutes.
-                                        </p>
-
-                                        <motion.div
-                                            animate={{
-                                                scale: [1, 1.05, 1],
-                                            }}
-                                            transition={{
-                                                duration: 2,
-                                                repeat: Infinity,
-                                                ease: "easeInOut"
-                                            }}
-                                            className="text-sm text-gray-400"
-                                        >
-                                            Redirecting you...
-                                        </motion.div>
-                                    </motion.div>
-                                )}
+                                    </div>
+                                </div>
 
                                 {/* Floating Elements */}
                                 <motion.div
@@ -311,6 +298,13 @@ const LeadMagnetPage = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Subscribe Popup */}
+            <SubscribePopup
+                isOpen={isPopupOpen}
+                onClose={handleClosePopup}
+                onSuccess={handleSubscribeSuccess}
+            />
         </div>
     );
 };

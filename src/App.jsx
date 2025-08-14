@@ -4,10 +4,11 @@ import HeroSection from './components/HeroSection';
 import WhoWeHelpSection from './components/WhoWeHelpSection';
 import WhyFunnelsFailSection from './components/WhyFunnelsFailSection';
 import WhatWeDoSection from './components/WhatWeDoSection';
-import TestimonialsSection from './components/TestimonialsSection';
+// import TestimonialsSection from './components/TestimonialsSection';
 import GuaranteeSection from './components/GuaranteeSection';
 import HowItWorksSection from './components/HowItWorksSection';
 import FinalCTASection from './components/FinalCTASection';
+import Footer from './components/Footer';
 import DevNavigation from './components/DevNavigation';
 
 function App() {
@@ -19,11 +20,12 @@ function App() {
         <WhoWeHelpSection />
         <WhyFunnelsFailSection />
         <WhatWeDoSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         <GuaranteeSection />
         <HowItWorksSection />
         <FinalCTASection />
       </main>
+      <Footer />
       <DevNavigation />
     </div>
   );
