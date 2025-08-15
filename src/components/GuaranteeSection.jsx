@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, DollarSign } from 'lucide-react';
+import { openCalendlyLink } from '../utils/calendly';
 
 const GuaranteeSection = () => {
     return (
@@ -147,6 +148,7 @@ const GuaranteeSection = () => {
                         Ready to transform your funnel with zero risk?
                     </p>
                     <motion.button
+                        onClick={openCalendlyLink}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 lg:px-10 rounded-xl sm:rounded-2xl text-base sm:text-lg lg:text-xl transition-all duration-200 shadow-lg hover:shadow-xl"

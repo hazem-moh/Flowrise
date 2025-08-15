@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, ExternalLink, Play, ArrowRight, Zap, Star, TrendingUp, Shield, Clock } from 'lucide-react';
+import { openCalendlyLink } from '../utils/calendly';
 
 const FinalCTASection = () => {
     const [typedText, setTypedText] = useState('');
@@ -141,11 +142,7 @@ const FinalCTASection = () => {
                         <div className="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8 mb-12">
                             {/* Primary CTA - Enhanced */}
                             <motion.button
-                                onClick={() => {
-                                    const redirectUrl = window.location.origin + '/call-booked';
-                                    const calendlyUrl = `https://calendly.com/hazemmohamed345674/new-meeting?redirect_url=${encodeURIComponent(redirectUrl)}`;
-                                    window.open(calendlyUrl, '_blank');
-                                }}
+                                onClick={openCalendlyLink}
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="group relative bg-gradient-to-r from-flowrise-green-600 to-flowrise-green-700 hover:from-flowrise-green-700 hover:to-flowrise-green-800 text-white font-bold py-6 px-12 rounded-2xl text-xl lg:text-2xl transition-all duration-300 shadow-2xl hover:shadow-flowrise-green-500/25 w-full lg:w-auto min-w-[320px]"
@@ -174,7 +171,6 @@ const FinalCTASection = () => {
                                 />
                             </motion.button>
 
-                     
                         </div>
 
                         {/* Trust Indicators */}
@@ -200,7 +196,6 @@ const FinalCTASection = () => {
                         </motion.div>
                     </motion.div>
 
-           
                 </div>
             </div>
         </section>

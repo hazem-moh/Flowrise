@@ -110,22 +110,22 @@ const WhatToExpectPage = () => {
                 />
             </div>
 
-            <div className="container mx-auto px-6 py-20 relative">
+            <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 relative">
                 <div className="max-w-7xl mx-auto">
                     {/* Header Section */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center mb-16"
+                        className="text-center mb-12 sm:mb-16"
                     >
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="mb-8"
+                            className="mb-6 sm:mb-8"
                         >
-                            <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-flow-purple-500 to-flow-blue-500 bg-clip-text text-transparent mb-2">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold bg-gradient-to-r from-flow-purple-500 to-flow-blue-500 bg-clip-text text-transparent mb-2">
                                 🌊 FLOWRISE
                             </h1>
                         </motion.div>

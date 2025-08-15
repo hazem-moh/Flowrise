@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Play, Download, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { openCalendlyLink } from '../utils/calendly';
 
 const Navigation = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -18,9 +19,8 @@ const Navigation = () => {
 
     const navItems = [
         { name: 'How It Works', href: '#how-it-works' },
-        { name: 'Results', href: '#testimonials' },
         { name: 'Guarantee', href: '#guarantee' },
-        { name: 'Free Blueprint', href: '/lead-magnet', icon: Download },
+        { name: 'Free Blueprint', href: '/blueprint', icon: Download },
     ];
 
     return (
@@ -59,6 +59,20 @@ const Navigation = () => {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                         whileHover={{ scale: 1.05, color: '#8b5cf6' }}
+                                        onClick={(e) => {
+                                            // Handle smooth scroll for anchor links
+                                            if (!isRouterLink && item.href.startsWith('#')) {
+                                                e.preventDefault();
+                                                const element = document.querySelector(item.href);
+                                                if (element) {
+                                                    const offsetTop = element.offsetTop - 100; // Account for fixed navigation
+                                                    window.scrollTo({
+                                                        top: offsetTop,
+                                                        behavior: 'smooth'
+                                                    });
+                                                }
+                                            }
+                                        }}
                                         className="flex items-center gap-2 text-gray-300 hover:text-flowrise-blue-400 transition-colors duration-300 font-medium"
                                     >
                                         {item.icon && <item.icon className="w-4 h-4" />}
@@ -72,11 +86,7 @@ const Navigation = () => {
                         <div className="hidden md:flex items-center gap-4">
 
                             <motion.button
-                                onClick={() => {
-                                    const redirectUrl = window.location.origin + '/call-booked';
-                                    const calendlyUrl = `https://calendly.com/hazemmohamed345674/new-meeting?redirect_url=${encodeURIComponent(redirectUrl)}`;
-                                    window.open(calendlyUrl, '_blank');
-                                }}
+                                onClick={openCalendlyLink}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-flowrise-blue-600 to-flowrise-green-600 text-white font-semibold rounded-lg shadow-glow hover:shadow-glow-lg transition-all duration-300"
@@ -127,39 +137,66 @@ const Navigation = () => {
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden bg-deep-space-900/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
+                            className="md:hidden bg-flowrise-navy-900/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
                         >
                             <div className="container mx-auto px-6 py-6">
                                 <div className="flex flex-col gap-4">
                                     {navItems.map((item, index) => {
                                         const isRouterLink = item.href.startsWith('/');
-                                        const Component = isRouterLink ? Link : motion.a;
-                                        const linkProps = isRouterLink ? { to: item.href } : { href: item.href };
 
                                         return (
-                                            <Component
+                                            <motion.div
                                                 key={item.name}
-                                                {...linkProps}
                                                 initial={{ x: -20, opacity: 0 }}
                                                 animate={{ x: 0, opacity: 1 }}
                                                 transition={{ duration: 0.3, delay: index * 0.1 }}
                                                 whileTap={{ scale: 0.95 }}
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className="flex items-center gap-2 text-gray-300 hover:text-flowrise-blue-400 transition-colors duration-300 font-medium py-2"
                                             >
-                                                {item.icon && <item.icon className="w-4 h-4" />}
-                                                {item.name}
-                                            </Component>
+                                                {isRouterLink ? (
+                                                    <Link
+                                                        to={item.href}
+                                                        onClick={() => setIsMobileMenuOpen(false)}
+                                                        className="flex items-center gap-2 text-gray-300 hover:text-flowrise-blue-400 transition-colors duration-300 font-medium py-2 w-full"
+                                                    >
+                                                        {item.icon && <item.icon className="w-4 h-4" />}
+                                                        {item.name}
+                                                    </Link>
+                                                ) : (
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            setIsMobileMenuOpen(false);
+                                                            // Handle smooth scroll for anchor links
+                                                            if (item.href.startsWith('#')) {
+                                                                // Small delay to allow menu to close first
+                                                                setTimeout(() => {
+                                                                    const element = document.querySelector(item.href);
+                                                                    if (element) {
+                                                                        const offsetTop = element.offsetTop - 100; // Account for fixed navigation
+                                                                        window.scrollTo({
+                                                                            top: offsetTop,
+                                                                            behavior: 'smooth'
+                                                                        });
+                                                                    }
+                                                                }, 300);
+                                                            }
+                                                        }}
+                                                        className="flex items-center gap-2 text-gray-300 hover:text-flowrise-blue-400 transition-colors duration-300 font-medium py-2 w-full text-left"
+                                                    >
+                                                        {item.icon && <item.icon className="w-4 h-4" />}
+                                                        {item.name}
+                                                    </button>
+                                                )}
+                                            </motion.div>
                                         );
                                     })}
 
                                     <div className=" pt-4 mt-2">
-                                    
+
                                         <motion.button
                                             onClick={() => {
-                                                const redirectUrl = window.location.origin + '/call-booked';
-                                                const calendlyUrl = `https://calendly.com/hazemmohamed345674/new-meeting?redirect_url=${encodeURIComponent(redirectUrl)}`;
-                                                window.open(calendlyUrl, '_blank');
+                                                setIsMobileMenuOpen(false);
+                                                openCalendlyLink();
                                             }}
                                             initial={{ x: -20, opacity: 0 }}
                                             animate={{ x: 0, opacity: 1 }}

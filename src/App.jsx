@@ -9,7 +9,7 @@ import GuaranteeSection from './components/GuaranteeSection';
 import HowItWorksSection from './components/HowItWorksSection';
 import FinalCTASection from './components/FinalCTASection';
 import Footer from './components/Footer';
-import DevNavigation from './components/DevNavigation';
+// import DevNavigation from './com ponents/DevNavigation';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <FinalCTASection />
       </main>
       <Footer />
-      <DevNavigation />
+      {/* <DevNavigation /> */}
     </div>
   );
 }

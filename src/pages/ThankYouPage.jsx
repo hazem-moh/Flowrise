@@ -28,7 +28,7 @@ const ThankYouPage = () => {
     };
 
     const handleGoToBlueprint = () => {
-        navigate('/lead-magnet');
+        navigate('/blueprint');
     };
 
     const confettiColors = ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
@@ -91,7 +91,7 @@ const ThankYouPage = () => {
                 />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                     {/* Success Icon */}
                     <motion.div
@@ -103,7 +103,7 @@ const ThankYouPage = () => {
                             stiffness: 200,
                             delay: 0.2
                         }}
-                        className="mb-8"
+                        className="mb-6 sm:mb-8"
                     >
                         <div className="relative inline-block">
                             <motion.div
@@ -116,9 +116,9 @@ const ThankYouPage = () => {
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
-                                className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-glow mx-auto"
+                                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-glow mx-auto"
                             >
-                                <CheckCircle className="w-12 h-12 text-white" />
+                                <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" />
                             </motion.div>
 
                             {/* Floating Elements Around Icon */}
@@ -151,7 +151,7 @@ const ThankYouPage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2"
                     >
                         "Your Blueprint Is{' '}
                         <span className="bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
@@ -165,7 +165,7 @@ const ThankYouPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+                        className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2"
                     >
                         Check your email (and spam folder) for your instant download.
                         While you wait — want to shortcut the process?
@@ -176,7 +176,7 @@ const ThankYouPage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
-                        className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 lg:p-12 border border-white/20 mb-12 relative overflow-hidden"
+                        className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 border border-white/20 mb-8 sm:mb-12 relative overflow-hidden"
                     >
                         {/* Background Pattern */}
                         <div className="absolute inset-0 opacity-10">

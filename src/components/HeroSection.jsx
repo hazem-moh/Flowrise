@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Play, ArrowRight, Instagram, MessageCircle, Mail, Zap } from 'lucide-react';
+import { openCalendlyLink } from '../utils/calendly';
 
 const HeroSection = () => {
     return (
@@ -88,6 +89,7 @@ const HeroSection = () => {
                             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start max-w-lg mx-auto lg:mx-0"
                         >
                             <motion.button
+                                onClick={openCalendlyLink}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-flowrise-blue-600 to-flowrise-green-600 text-white font-semibold text-sm sm:text-base rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 flex items-center justify-center gap-2"
@@ -99,7 +101,7 @@ const HeroSection = () => {
                                 />
                             </motion.button>
 
-                         
+
                         </motion.div>
                     </motion.div>
 
@@ -113,7 +115,7 @@ const HeroSection = () => {
                         {/* Central Flowrise Logo/Icon - Static */}
                         <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 lg:w-60 lg:h-60 flex items-center justify-center ">
 
-                            <img src="/public/FlowriseLogo.png" alt="" />
+                            <img src="/FlowriseLogo.png" alt="FlowriseLogo" />
                             {/* <div className="text-white text-xl sm:text-2xl lg:text-3xl font-bold">F</div>
                             <div className="absolute inset-0 bg-gradient-to-br from-flowrise-blue-400 to-flowrise-green-400 rounded-2xl blur-lg opacity-40"></div>
                             <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 lg:w-20 h-3 sm:h-4 lg:h-6 bg-black/30 rounded-full blur-lg"></div> */}

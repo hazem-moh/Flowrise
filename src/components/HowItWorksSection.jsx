@@ -12,6 +12,7 @@ import {
     Users
 } from 'lucide-react';
 import ReactiveIcon from './ReactiveIcon';
+import { openCalendlyLink } from '../utils/calendly';
 
 const HowItWorksSection = () => {
     const steps = [
@@ -461,6 +462,7 @@ const HowItWorksSection = () => {
                             </div>
 
                             <motion.button
+                                onClick={openCalendlyLink}
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="group relative px-10 py-6 bg-gradient-to-r from-blue-600 to-green-600 text-white font-bold text-xl rounded-2xl shadow-2xl shadow-blue-500/25 hover:shadow-green-500/25 transition-all duration-300"

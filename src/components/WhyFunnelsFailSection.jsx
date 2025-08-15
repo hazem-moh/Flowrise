@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { X, AlertTriangle, MessageSquare, FileText, Settings, RotateCcw, CheckCircle, Zap } from 'lucide-react';
 import ReactiveIcon from './ReactiveIcon';
+import { openCalendlyLink } from '../utils/calendly';
 
 const WhyFunnelsFailSection = () => {
     const failures = [
@@ -303,6 +304,7 @@ const WhyFunnelsFailSection = () => {
                             </p>
 
                             <motion.button
+                                onClick={openCalendlyLink}
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="group relative px-10 py-6 bg-gradient-to-r from-flowrise-blue-600 to-flowrise-green-600 text-white font-bold text-xl rounded-2xl shadow-2xl shadow-flowrise-blue-500/25 hover:shadow-flowrise-green-500/25 transition-all duration-300"

@@ -9,7 +9,7 @@ const DevNavigation = () => {
 
     const routes = [
         { path: '/', name: 'Landing Page', icon: Home },
-        { path: '/lead-magnet', name: 'Lead Magnet', icon: Download },
+        { path: '/blueprint', name: 'Blueprint', icon: Download },
         { path: '/thank-you', name: 'Thank You', icon: CheckCircle },
         { path: '/book-call', name: 'What to Expect', icon: Calendar },
         { path: '/call-booked', name: 'Call Booked', icon: Phone },
